@@ -20,6 +20,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 
@@ -210,6 +211,7 @@ func (rc *Router) handleInteraction(request *http.Request) ([]byte, error) {
 	}
 
 	payload := request.PostForm.Get("payload")
+	fmt.Println(payload)
 	ie := &slack.InteractionCallback{}
 	err = json.Unmarshal([]byte(payload), ie)
 	if err != nil {
